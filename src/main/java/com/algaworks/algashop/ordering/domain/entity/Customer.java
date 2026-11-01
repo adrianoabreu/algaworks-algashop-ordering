@@ -3,6 +3,7 @@ package com.algaworks.algashop.ordering.domain.entity;
 import com.algaworks.algashop.ordering.domain.exception.CustomerArchivedException;
 import com.algaworks.algashop.ordering.domain.validator.FieldValidations;
 import com.algaworks.algashop.ordering.domain.valueobject.*;
+import lombok.Builder;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -25,10 +26,10 @@ public class Customer {
     private LoyaltyPoints loyaltyPoints;
     private Address address;
 
-    //Instancia de um novo Customer/Cliente.
-    public static Customer brandNew(FullName fullName, BirthDate birthDate, Email email,
-                                    Phone phone, Document document, Boolean promotionNotificationsAllowed,
-                                    Address address) {
+    @Builder(builderClassName = "BrandNewCustomerBuild", builderMethodName = "brandNew")
+    private static Customer createBrandNew(FullName fullName, BirthDate birthDate, Email email,
+                                           Phone phone, Document document, Boolean promotionNotificationsAllowed,
+                                           Address address) {
         return new Customer(new CustomerId(),
                 fullName,
                 birthDate,
@@ -43,28 +44,7 @@ public class Customer {
                 address);
     }
 
-    //Instancia de um Customer/Cliente existente.
-    public static Customer existing(CustomerId id, FullName fullName, BirthDate birthDate, Email email, Phone phone,
-                                    Document document, Boolean promotionNotificationsAllowed, Boolean archived,
-                                    OffsetDateTime registeredAt, OffsetDateTime archivedAt,
-                                    LoyaltyPoints loyaltyPoints, Address address) {
-        return new Customer(
-                id,
-                fullName,
-                birthDate,
-                email,
-                phone,
-                document,
-                promotionNotificationsAllowed,
-                archived,
-                registeredAt,
-                archivedAt,
-                loyaltyPoints,
-                address
-        );
-
-    }
-
+    @Builder(builderClassName = "ExistingCustomerBuild", builderMethodName = "existing")
     private Customer(CustomerId id, FullName fullName, BirthDate birthDate, Email email, Phone phone,
                      Document document, Boolean promotionNotificationsAllowed, Boolean archived,
                      OffsetDateTime registeredAt, OffsetDateTime archivedAt, LoyaltyPoints loyaltyPoints, Address address) {
