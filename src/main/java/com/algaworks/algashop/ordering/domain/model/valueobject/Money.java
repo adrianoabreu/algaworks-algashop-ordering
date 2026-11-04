@@ -15,11 +15,11 @@ public record Money(BigDecimal value) implements Comparable<Money> {
     }
 
     public Money(BigDecimal value) {
-        Objects.requireNonNull(value); //todo mensagem
-        this.value = value.setScale(2, roundingMode);
-        if (this.value.signum() == -1) {
-            throw new IllegalArgumentException();//todo mensagem
+        Objects.requireNonNull(value);
+        if (value.signum() < 0) {
+            throw new IllegalArgumentException("O valor não pode ser negativo");
         }
+        this.value = value.setScale(2, roundingMode);
     }
 
     public Money multiply(Quantity quantity) {
