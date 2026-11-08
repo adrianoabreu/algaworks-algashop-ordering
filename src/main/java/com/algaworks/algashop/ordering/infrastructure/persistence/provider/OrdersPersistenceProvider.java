@@ -75,6 +75,16 @@ public class OrdersPersistenceProvider implements Orders {
         return entities.stream().map(disassembler::toDomainEntity).collect(Collectors.toList());
     }
 
+    @Override
+    public long salesQuantityByCustomerInYear(CustomerId customerId, Year year) {
+        return this.persistenceRepository.salesQuantityByCustomerInYear(customerId.value(), year.getValue());
+    }
+
+    @Override
+    public Money totalSoldForCustomer(CustomerId customerId) {
+        return new Money(this.persistenceRepository.totalSoldForCustomer(customerId.value()));
+    }
+
     private void update(Order aggregateRoot, OrderPersistenceEntity persistenceEntity) {
         persistenceEntity = assembler.merge(persistenceEntity, aggregateRoot);
         entityManager.detach(persistenceEntity);
