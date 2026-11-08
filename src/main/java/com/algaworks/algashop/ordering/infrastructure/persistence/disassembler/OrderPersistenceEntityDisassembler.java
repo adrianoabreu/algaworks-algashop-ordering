@@ -38,8 +38,6 @@ public class OrderPersistenceEntityDisassembler {
                 .readyAt(persistenceEntity.getReadyAt())
                 .items(new HashSet<>())
                 .version(persistenceEntity.getVersion())
-                .billing(toBillingValueObject(persistenceEntity.getBilling()))
-                .shipping(toShippingValueObject(persistenceEntity.getShipping()))
                 .items(toDomainEntity(persistenceEntity.getItems()))
                 .build();
     }
