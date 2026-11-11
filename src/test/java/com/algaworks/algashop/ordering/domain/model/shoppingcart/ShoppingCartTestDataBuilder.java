@@ -1,4 +1,4 @@
-package com.algaworks.algashop.ordering.domain.model.shoppingCart;
+package com.algaworks.algashop.ordering.domain.model.shoppingcart;
 
 import com.algaworks.algashop.ordering.domain.model.commons.Quantity;
 import com.algaworks.algashop.ordering.domain.model.customer.CustomerId;

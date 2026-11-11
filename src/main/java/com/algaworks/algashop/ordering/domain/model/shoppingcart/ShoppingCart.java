@@ -1,4 +1,4 @@
-package com.algaworks.algashop.ordering.domain.model.shoppingCart;
+package com.algaworks.algashop.ordering.domain.model.shoppingcart;
 
 import com.algaworks.algashop.ordering.domain.model.AggregateRoot;
 import com.algaworks.algashop.ordering.domain.model.commons.Money;
