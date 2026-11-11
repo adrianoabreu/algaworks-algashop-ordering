@@ -2,10 +2,15 @@ package com.algaworks.algashop.ordering.infrastructure.shipping.client.fake;
 
 import com.algaworks.algashop.ordering.domain.model.order.shipping.ShippingCostService;
 import com.algaworks.algashop.ordering.domain.model.commons.Money;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@ConditionalOnProperty(
+        name = "algashop.integrations.shipping.provider",
+        havingValue = "FAKE"
+)
 @Component
 public class ShippingCostServiceFakeImpl implements ShippingCostService {
     @Override
