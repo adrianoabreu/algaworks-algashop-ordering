@@ -94,6 +94,8 @@ class CheckoutApplicationServiceIT {
         Optional<ShoppingCart> updatedCart = shoppingCarts.ofId(shoppingCart.id());
         Assertions.assertThat(updatedCart).isPresent();
         Assertions.assertThat(updatedCart.get().isEmpty()).isTrue();
+
+        Mockito.verify(orderEventListener).listen(Mockito.any(OrderPlacedEvent.class));
     }
 
     @Test
