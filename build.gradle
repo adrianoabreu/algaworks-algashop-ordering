@@ -72,10 +72,9 @@ tasks.named('check') {
 }
 
 contracts {
-	testFramework ='JUNIT5'
-	testMode = 'MockMvc'
-	contractsDslDir = project.file("${layout.projectDirectory}/src/contractTest/resources/contracts")
+	packageWithBaseClasses = "com.algaworks.algashop.ordering.contract.base"
 }
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
